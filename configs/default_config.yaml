@@ -1,0 +1,55 @@
+# 项目配置文件
+
+# 核心系统配置
+system:
+  project_name: "money"
+  version: "1.0.0"
+
+# 数据路径配置 (尽量使用相对路径)
+paths:
+  # 原始数据
+  videos_dir: "data/videos"
+  frames_dir: "data/frames"
+  
+  # 中间产物 (特征、模型、分数)
+  features_high_dim: "outputs/features"
+  features_2d: "outputs/features_2d"
+  models_high_dim: "outputs/models"
+  models_2d: "outputs/models_2d"
+  scores_high_dim: "outputs/scores"
+  scores_2d: "outputs/scores_2d"
+  postprocess: "outputs/postprocess"
+  evaluation: "outputs/evaluation"
+  
+  # 最终交付物
+  deliverables_high_dim: "outputs/deliverables/high_dim"
+  deliverables_2d: "outputs/deliverables/2d"
+
+# 数据处理配置
+data_prep:
+  target_fps: 2
+  train_duration_minutes: 12
+  frame_size: [224, 224]
+
+# 异常检测模型配置
+modeling:
+  # 滑动窗口平滑参数
+  temporal_window_size: 9
+  # 告警阈值分位数 (可调整为自适应)
+  threshold_percentile: 0.95
+  # 最小连续异常帧数，滤除瞬态噪声
+  min_anomaly_length: 5
+
+# 2D 降维配置 (UMAP)
+umap_config:
+  n_neighbors: 15
+  min_dist: 0.1
+  metric: "cosine"
+
+# 可视化与多模态配置
+visualization:
+  # 输出的风险关键帧数量
+  top_k_risk_frames: 10
+  # 是否开启多模态语义报告
+  enable_multimodal_explanation: true
+  vlm_model_id: "Salesforce/blip-image-captioning-base"

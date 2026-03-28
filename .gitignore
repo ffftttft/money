@@ -1,0 +1,21 @@
+# Local state
+.DS_Store
+.ai_project_state.md
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Large local data and generated artifacts
+data/*
+!data/.gitkeep
+
+outputs/*
+!outputs/.gitkeep
+
+results/*
+!results/.gitkeep
